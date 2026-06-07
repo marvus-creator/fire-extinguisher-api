@@ -1,59 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🔥 Fire Extinguisher Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack RESTful microservices application for managing fire extinguishers, inspections, and maintenance for TZW LTD.
 
-## About Laravel
+## 👤 Developer
+**Nkusi Malvyn**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🔗 Links
+- **Frontend:** http://localhost:5173
+- **Backend API:** http://127.0.0.1:8000
+- **Swagger Docs:** http://127.0.0.1:8000/api/documentation
+- **Figma Mockup:** [ADD YOUR FIGMA LINK HERE]
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🛠️ Tech Stack
+- **Frontend:** React.js + Vite
+- **Backend:** Laravel (PHP)
+- **Database:** MySQL
+- **Authentication:** JWT (JSON Web Tokens)
+- **API Docs:** Swagger/OpenAPI 3.0
+- **Styling:** CSS-in-JS
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📋 Features
+- ✅ User Authentication (Register, Login, Logout)
+- ✅ Role-based Access Control (Admin, Inspector, User)
+- ✅ Fire Extinguisher CRUD Operations
+- ✅ Inspection Scheduling with Personnel Notification
+- ✅ Maintenance Log Tracking
+- ✅ Real-time Reports (Daily, Monthly, Yearly)
+- ✅ PDF & CSV Export
+- ✅ Swagger API Documentation
+- ✅ CORS Protection
+- ✅ Input Validation & Exception Handling
+- ✅ Pagination on all records
 
-## Learning Laravel
+## 🚀 How to Run
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Backend
+```bash
+cd fire-extinguisher-api
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan jwt:secret
+php artisan migrate
+php artisan serve
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Frontend
+```bash
+cd fire-extinguisher-frontend
+npm install
+npm run dev
+```
 
-## Laravel Sponsors
+## 🗄️ Database
+- Database name: `fire_extinguisher_db`
+- Tables: users, extinguishers, inspections, maintenance_logs
+- Export file: `fire_extinguisher_db.sql` (included in repo)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 📡 API Endpoints
 
-### Premium Partners
+### Auth
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | /api/register | Register new user |
+| POST | /api/login | Login user |
+| POST | /api/logout | Logout user |
+| GET | /api/me | Get current user |
+| PUT | /api/profile | Update profile |
+| PUT | /api/change-password | Change password |
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### Extinguishers
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/extinguishers | List all |
+| POST | /api/extinguishers | Create new |
+| GET | /api/extinguishers/{id} | Get by ID |
+| PUT | /api/extinguishers/{id} | Update |
+| DELETE | /api/extinguishers/{id} | Delete |
 
-## Contributing
+### Inspections
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/inspections | List all |
+| POST | /api/inspections | Schedule new |
+| GET | /api/inspections/{id} | Get by ID |
+| PUT | /api/inspections/{id} | Update |
+| DELETE | /api/inspections/{id} | Delete |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Maintenance Logs
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/maintenance-logs | List all |
+| POST | /api/maintenance-logs | Create log |
+| GET | /api/maintenance-logs/{id} | Get by ID |
+| PUT | /api/maintenance-logs/{id} | Update |
+| DELETE | /api/maintenance-logs/{id} | Delete |
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Reports
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | /api/reports/general | General stats |
+| GET | /api/reports/maintenance-history | Maintenance history |
+| GET | /api/reports/expired | Expired extinguishers |
+| GET | /api/reports/export/csv | Export CSV |
+| GET | /api/reports/export/pdf | Export PDF |
