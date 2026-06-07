@@ -1,0 +1,537 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Fire Extinguisher API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api": {
+            "servers": [
+                {
+                    "url": "http://127.0.0.1:8000",
+                    "description": "Local"
+                }
+            ]
+        },
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Register user",
+                "operationId": "8a56853624e025573120a09a4c75d468",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "first_name": {
+                                        "type": "string"
+                                    },
+                                    "last_name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User registered"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Login user",
+                "operationId": "a3b306d14572d1f4bd6c064b3233e7b8",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Login successful"
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Logout user",
+                "operationId": "fe8f3429cd6979b3b4517e186505f9f9",
+                "responses": {
+                    "200": {
+                        "description": "Logged out"
+                    }
+                }
+            }
+        },
+        "/api/me": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Get current user",
+                "operationId": "9d9bc556f927575aa492a88c28fe5908",
+                "responses": {
+                    "200": {
+                        "description": "Current user"
+                    }
+                }
+            }
+        },
+        "/api/profile": {
+            "put": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Update profile",
+                "operationId": "ac662ae856fb1cc2239e27417f0496bd",
+                "responses": {
+                    "200": {
+                        "description": "Profile updated"
+                    }
+                }
+            }
+        },
+        "/api/change-password": {
+            "put": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Change password",
+                "operationId": "c9cf137ca229152d78da153d798cb251",
+                "responses": {
+                    "200": {
+                        "description": "Password changed"
+                    }
+                }
+            }
+        },
+        "/api/extinguishers": {
+            "get": {
+                "tags": [
+                    "Extinguishers"
+                ],
+                "summary": "List all extinguishers",
+                "operationId": "a47f20efbc1f8b71f02b0b212dc0244a",
+                "responses": {
+                    "200": {
+                        "description": "List of extinguishers"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Extinguishers"
+                ],
+                "summary": "Register new extinguisher",
+                "operationId": "42d54262f6f5ac81e8bd1b163ec1c328",
+                "responses": {
+                    "201": {
+                        "description": "Extinguisher created"
+                    }
+                }
+            }
+        },
+        "/api/extinguishers/{id}": {
+            "get": {
+                "tags": [
+                    "Extinguishers"
+                ],
+                "summary": "Get extinguisher by ID",
+                "operationId": "124c54633d4cc3524a923d73d8e04f78",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Extinguisher details"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Extinguishers"
+                ],
+                "summary": "Update extinguisher",
+                "operationId": "a781bada347b8115be2cc0f4ff5d5164",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Extinguisher updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Extinguishers"
+                ],
+                "summary": "Delete extinguisher",
+                "operationId": "e20284aa59cb95d564700cc42e0e9f33",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Extinguisher deleted"
+                    }
+                }
+            }
+        },
+        "/api/inspections": {
+            "get": {
+                "tags": [
+                    "Inspections"
+                ],
+                "summary": "List all inspections",
+                "operationId": "8a01feb4adf3f8aae6939cca4841b3d4",
+                "responses": {
+                    "200": {
+                        "description": "List of inspections"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Inspections"
+                ],
+                "summary": "Schedule inspection",
+                "operationId": "3b810ea364750b49f873fda6f7cb891e",
+                "responses": {
+                    "201": {
+                        "description": "Inspection scheduled"
+                    }
+                }
+            }
+        },
+        "/api/inspections/{id}": {
+            "get": {
+                "tags": [
+                    "Inspections"
+                ],
+                "summary": "Get inspection by ID",
+                "operationId": "4c68145fb38d42c32556e6a75bce2d11",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Inspection details"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Inspections"
+                ],
+                "summary": "Update inspection",
+                "operationId": "e857b03cd0bbc697459398a5c74b26fc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Inspection updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Inspections"
+                ],
+                "summary": "Delete inspection",
+                "operationId": "295dc71842de0c265c35c352becd478d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Inspection deleted"
+                    }
+                }
+            }
+        },
+        "/api/maintenance-logs": {
+            "get": {
+                "tags": [
+                    "Maintenance"
+                ],
+                "summary": "List all maintenance logs",
+                "operationId": "eb4c7e2b66ae7513ae9549437c43aafc",
+                "responses": {
+                    "200": {
+                        "description": "List of logs"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Maintenance"
+                ],
+                "summary": "Create maintenance log",
+                "operationId": "6ddde49357ab63252d1817dc1d94b23c",
+                "responses": {
+                    "201": {
+                        "description": "Log created"
+                    }
+                }
+            }
+        },
+        "/api/maintenance-logs/{id}": {
+            "get": {
+                "tags": [
+                    "Maintenance"
+                ],
+                "summary": "Get log by ID",
+                "operationId": "0e91c61ff9bac3e63cf3044e31a09103",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Log details"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Maintenance"
+                ],
+                "summary": "Update log",
+                "operationId": "b1fa479018abc266f6ca6ed97fdba8b4",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Log updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Maintenance"
+                ],
+                "summary": "Delete log",
+                "operationId": "9593c4f98704d8bd70cde4be42d617b7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Log deleted"
+                    }
+                }
+            }
+        },
+        "/api/reports/general": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "General report",
+                "operationId": "7fa86a886c5127ce00b6ea3e59f11076",
+                "responses": {
+                    "200": {
+                        "description": "General statistics"
+                    }
+                }
+            }
+        },
+        "/api/reports/maintenance-history": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "Maintenance history",
+                "operationId": "07c8e4567a0ff69b204d6339e900dde0",
+                "responses": {
+                    "200": {
+                        "description": "Maintenance history"
+                    }
+                }
+            }
+        },
+        "/api/reports/expired": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "Expired extinguishers",
+                "operationId": "2510a52b3bbd7e89125c089bc7c64bbd",
+                "responses": {
+                    "200": {
+                        "description": "Expired extinguishers"
+                    }
+                }
+            }
+        },
+        "/api/reports/export/csv": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "Export CSV",
+                "operationId": "828802697860664350401c467fec1c16",
+                "responses": {
+                    "200": {
+                        "description": "CSV download"
+                    }
+                }
+            }
+        },
+        "/api/reports/export/pdf": {
+            "get": {
+                "tags": [
+                    "Reports"
+                ],
+                "summary": "Export PDF",
+                "operationId": "f5c2c5ee1c5c91f220c6ced95526df21",
+                "responses": {
+                    "200": {
+                        "description": "PDF download"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "Auth"
+        },
+        {
+            "name": "Extinguishers",
+            "description": "Extinguishers"
+        },
+        {
+            "name": "Inspections",
+            "description": "Inspections"
+        },
+        {
+            "name": "Maintenance",
+            "description": "Maintenance"
+        },
+        {
+            "name": "Reports",
+            "description": "Reports"
+        }
+    ],
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ]
+}
